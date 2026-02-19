@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosélya | Essence Royale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #fff; color: #1a1a1a; -webkit-font-smoothing: antialiased; }
+        
+        /* Header */
+        header { padding: 30px; text-align: center; background: #fff; border-bottom: 0.5px solid #f2f2f2; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 28px; letter-spacing: 5px; text-transform: uppercase; font-weight: 400; }
+
+        /* Hero Split Section */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; height: 90vh; background: #fff; }
+        .hero-video { position: relative; overflow: hidden; background: #f9f9f9; }
+        .hero-video video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+        .hero-image { background: url('pack.png') center/cover no-repeat; display: flex; align-items: flex-end; padding: 60px; justify-content: center; }
+        
+        .cta-btn { 
+            background: #1a1a1a; color: #fff; text-decoration: none; padding: 18px 45px; 
+            font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s;
+        }
+        .cta-btn:hover { background: #333; letter-spacing: 3px; }
+
+        /* Welcome Text */
+        .intro { padding: 120px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .intro h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; margin-bottom: 30px; font-weight: 400; }
+        .intro p { font-size: 16px; line-height: 2; font-weight: 300; color: #555; letter-spacing: 0.5px; }
+
+        /* Product Grid */
+        .section-label { text-align: center; margin-bottom: 60px; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #999; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 15px; margin-bottom: 100px; }
+        .item { position: relative; overflow: hidden; aspect-ratio: 3/4; background: #f9f9f9; }
+        .item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .item:hover img { transform: scale(1.05); }
+        .item-info { padding: 20px 0; text-align: center; }
+        .item-info h3 { font-size: 13px; font-weight: 400; letter-spacing: 1px; margin-bottom: 5px; }
+        .item-info span { font-size: 12px; color: #888; }
+
+        /* Checkout */
+        .checkout-box { background: #fdfdfd; padding: 100px 20px; border-top: 1px solid #f2f2f2; }
+        .form-card { max-width: 450px; margin: 0 auto; }
+        input, select, textarea { 
+            width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 15px 5px; 
+            margin-bottom: 30px; font-family: inherit; font-size: 14px; outline: none; background: transparent;
+        }
+        input:focus { border-bottom: 1px solid #1a1a1a; }
+        .price-tag { font-family: 'Playfair Display', serif; font-size: 24px; text-align: center; margin-bottom: 40px; }
+        .wa-btn { 
+            width: 100%; background: #1a1a1a; color: #fff; border: none; padding: 20px; 
+            cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; height: auto; }
+            .hero-video, .hero-image { height: 60vh; }
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Rosélya</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline><source src="hero.mp4" type="video/mp4"></video>
+        </div>
+        <div class="hero-image">
+            <a href="#checkout" class="cta-btn">Découvrir les packs</a>
+        </div>
+    </section>
+
+    <div class="intro">
+        <h1>Votre essence royale</h1>
+        <p>Chez Rosélya, chaque femme mérite l’élégance et le raffinement. Nos huiles parfumées révèlent votre féminité absolue. Laissez votre éclat rayonner.</p>
+    </div>
+
+    <div class="section-label">Collection</div>
+    <div class="grid">
+        <div class="item-wrap"><div class="item"><img src="IMG_7073.png"></div><div class="item-info"><h3>Fruits Rouges</h3><span>120 DH</span></div></div>
+        <div class="item-wrap"><div class="item"><img src="IMG_7074.png"></div><div class="item-info"><h3>Ambre Gold</h3><span>120 DH</span></div></div>
+        <div class="item-wrap"><div class="item"><img src="IMG_7078.png"></div><div class="item-info"><h3>Vanille</h3><span>120 DH</span></div></div>
+    </div>
+
+    <div id="checkout" class="checkout-box">
+        <div class="form-card">
+            <div class="price-tag" id="total-view">Sélectionnez une offre</div>
+            <select id="prod" onchange="calc()">
+                <option value="120">1 Huile Parfumée (120 DH)</option>
+                <option value="340">Pack Prestige (340 DH)</option>
+            </select>
+            <input type="text" id="n" placeholder="Nom et Prénom">
+            <input type="tel" id="t" placeholder="Téléphone">
+            <input type="text" id="v" placeholder="Ville">
+            <textarea id="a" placeholder="Adresse complète"></textarea>
+            <p style="font-size: 11px; color: #999; margin-bottom: 20px;">* Livraison : 20 DH | Paiement à la réception.</p>
+            <button onclick="send()" class="wa-btn">Confirmer ma commande</button>
+        </div>
+    </div>
+
+    <script>
+        function calc() {
+            let p = parseInt(document.getElementById('prod').value);
+            document.getElementById('total-view').innerText = (p + 20) + " DH Total";
+        }
+        function send() {
+            let pr = document.getElementById('prod').options[document.getElementById('prod').selectedIndex].text;
+            let n = document.getElementById('n').value;
+            let t = document.getElementById('t').value;
+            let v = document.getElementById('v').value;
+            let a = document.getElementById('a').value;
+            let tot = document.getElementById('total-view').innerText;
+            
+            let url = `https://wa.me/212XXXXXXXXX?text=Commande Rosélya:%0A- ${pr}%0A- Nom: ${n}%0A- Tél: ${t}%0A- Ville: ${v}%0A- Adresse: ${a}%0A- Total: ${tot}`;
+            window.open(url, '_blank');
+        }
+        calc();
+    </script>
+</body>
+</html>
